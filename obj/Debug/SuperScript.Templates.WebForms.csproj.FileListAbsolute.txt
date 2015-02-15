@@ -1,0 +1,16 @@
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Templates.WebForms.dll.config
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Templates.WebForms.dll
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Templates.WebForms.pdb
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Common.dll
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Container.WebForms.dll
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Templates.dll
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Common.pdb
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Container.WebForms.pdb
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Templates.pdb
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\obj\Debug\SuperScript.Templates.WebForms.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\obj\Debug\SuperScript.Templates.WebForms.dll
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\obj\Debug\SuperScript.Templates.WebForms.pdb
+C:\Users\Andrew\Documents\Visual Studio 2012\Projects\SuperScriptLibrary\SuperScript.Templates.WebForms\bin\Debug\SuperScript.Common.xml
