@@ -1,0 +1,234 @@
+<h2>What Does It Do?</h2>
+
+<p>
+	This library is an add-on for <a href="https://github.com/Supertext/SuperScript.Common/" target="_blank">SuperScript</a>. It is strongly recommended
+	to read the <a href="http://supertext.github.io/SuperScript.Common/" target="_blank">documentation</a> for the core project before proceeding with this 
+	library. If you haven't yet read the core documentation then it is recommended that you start by reading about the 
+	<a href="http://supertext.github.io/SuperScript.Common/#!/core-concepts" target="_blank">core concepts</a>.
+</p>
+
+<p>
+	SuperScript.Templates.WebForms offers a WebForms container control for enclosing HTML templates entities to be processed by SuperScript.
+</p>
+
+<p>
+	SuperScript will retrieve the contents of this block and create an instance of 
+	<a href="http://supertext.github.io/SuperScript.Templates/#!/declarations.template-declaration" target="_blank"><abbr title="SuperScript.Templates.Declarables.TemplateDeclaration"><code>TemplateDeclaration</code></abbr></a> 
+	containing these contents.
+</p>
+
+<p>
+  When the <em>.aspx</em> file is rendered as a webpage the contents of the container control will be empty and the retrieved contents will be emitted
+  through the referenced <abbr title="SuperScript.Emitters.IEmitter"><code>IEmitter</code></abbr>.
+</p>
+
+<pre class="brush: c#">
+  class TemplateContainer : SuperScript.Container.WebForms.Container
+  {
+    protected override void __PreRender(object sender, EventArgs e)
+    protected override string GenerateComment(string comment, bool startOnNewLine = true)
+    protected override string GetContents()
+    public string Name { get; set; }
+  }
+</pre>
+
+<p>
+	The <abbr title="SuperScript.Templates.WebForms.Containers.TemplateContainer"><code>TemplateContainer</code></abbr>
+	control exposes a single public method, <abbr title="SuperScript.Templates.WebForms.Containers.TemplateContainer.Name"><code>Name</code></abbr>. 
+	However, understanding what the internal methods do may help understand the process which takes place.
+</p>
+
+<table class="table table-bordered">
+  <thead>
+  	<tr>
+  		<th>Name</th>
+  		<th>Type</th>
+  		<th>Description</th>
+  	</tr>
+  </thead>
+  <tr>
+    <td>Name</td>
+    <td>string</td>
+    <td>
+      <p>
+        Gets or sets the client-side name of the template.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">Internal members<td>
+  </tr>
+  <tr>
+  	<td>__PreRender</td>
+  	<td>void</td>
+  	<td>
+  		<p>
+  		    Removes the contents of the container control and places these contents into a new instance of 
+  		    <abbr title="SuperScript.JavaScript.Declarables.CollectedScript"><code>CollectedScript</code></abbr>.
+  		</p>
+  		<p>
+  		  The contents of the container control will be empty when the webpage is rendered, with the 
+  		  <abbr title="SuperScript.JavaScript.Declarables.CollectedScript"><code>CollectedScript</code></abbr> being 
+  		  emitted through the specified <abbr title="SuperScript.Emitters.IEmiiter"><code>IEmitter</code></abbr>.
+  		</p>
+  	</td>
+  </tr>
+  <tr>
+    <td>GenerateComment</td>
+    <td>string</td>
+    <td>
+      <p>
+        Returns a string containing the specified comment inside a multi-line JavaScript comment block.
+      </p>
+      <p>
+        This method is actually called from the <abbr title="SuperScript.Container.WebForms.Container.GetContents"><code>GetContents</code></abbr> method
+        on the base class.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>GetContents</td>
+    <td>string</td>
+    <td>
+      <p>
+        Returns a string containing the JavaScript that was declared inside the current instance of this control.
+      </p>
+      <p>
+        In this implementation of <abbr title="SuperScript.Container.WebForms.Container"><code>WebForms.Container</code></abbr>, this
+        method makes a call to <abbr title="SuperScript.Container.WebForms.Container.GetContents"><code>GetContents</code></abbr> on 
+        the base class as well as containining its own implementation logic.
+      </p>
+    </td>
+  </tr>
+	<tr>
+		<td colspan="3">
+			Inherited members
+		</td>
+	</tr>
+	<tr>
+		<td>AddLocationComments</td>
+		<td>bool</td>
+		<td>
+			<p>
+        			Determines whether the emitted contents contain comments indicating the original location when in debug mode.
+			</p>
+			<p>
+				<strong>Optional</strong>. The default value is <code>true</code>.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>EmitterKey</td>
+		<td>string</td>
+		<td>
+			<p>
+				Indicates which instance of <abbr title="SuperScript.Emitters.IEmitter"><code>IEmitter</code></abbr> the content should be added to.
+			</p>
+			<p>
+				<strong>Optional</strong>. If not specified then the contents will be added to the default implementation of <abbr title="SuperScript.Emitters.IEmitter"><code>IEmitter</code></abbr>.
+			</p>
+			<p>
+				Read more about the <em>default emitter</em> <a href="http://supertext.github.io/SuperScript.Common/#!/emitters.default-emitter">here</a>.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>GetFileName</td>
+		<td>string</td>
+		<td>
+			<p>
+				Returns the relative path and filename of the control or page which is instantiating this control.
+			</p>
+			<p>
+				Tyically this will be called by the derived implementation of <abbr title="SuperScript.Container.WebForms.Container.GenerateComment"><code>GenerateComment</code></abbr>.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>InsertAt</td>
+		<td>Nullable&lt;int&gt;</td>
+		<td>
+			<p>
+        Gets or sets the index into which the resultant instance of <abbr title="SuperScript.Declarables.DeclarationBase"><code>CollectedScript</code></abbr> will be
+				inserted into the central <abbr title="IList&lt;DeclarationBase&gt; SuperScript.Declarations.Collection"><code>Collection</code></abbr> of declarations.
+			</p>
+			<p>
+				<strong>Optional</strong>. Default value is <code>null</code> which appends the resultant instance of <abbr title="SuperScript.Declarables.DeclarationBase"><code>CollectedScript</code></abbr> to
+				the central <abbr title="IList&lt;DeclarationBase&gt; SuperScript.Declarations.Collection"><code>Collection</code></abbr> of declarations.
+			</p>
+		</td>
+	</tr>
+</table>
+
+<h3>Example</h3>
+
+<pre class="brush: html">
+	&lt;%@ Register TagPrefix="spx" Namespace="SuperScript.Templates.WebForms.Containers" Assembly="SuperScript.Templates.WebForms" %&gt;
+	&#10;
+	&lt;spxt:TemplateContainer runat="server" EmitterKey="templates" Name="testTemplate"&gt;
+
+		&lt;li&gt;${Name}&lt;/li&gt;
+
+	&lt;/spxt:TemplateContainer&gt;
+</pre>
+
+<p>
+  The above example creates a single instance of <abbr title="SuperScript.Templates.Declarables.TemplateDeclaration"><code>TemplateDeclaration</code></abbr> with
+  <em>demoTemplate</em> as the name of the client-side template.
+</p>
+
+<p>
+  The following example shows two templates being declared inside the same container.
+</p>
+
+<pre class="brush: html">
+	&lt;%@ Register TagPrefix="spx" Namespace="SuperScript.Templates.WebForms.Containers" Assembly="SuperScript.Templates.WebForms" %&gt;
+	&#10;
+	&lt;spxt:TemplateContainer runat="server" EmitterKey="templates" InsertAt="0" Name="demoTemplate"&gt;
+
+		&lt;script type="text/html" id="testTemplate"&gt;
+			&lt;li&gt;${Name}&lt;/li&gt;
+		&lt;/script&gt;
+		
+		&lt;script type="text/html" id="testTemplate2"&gt;
+			&lt;li&gt;Name: ${Name}&lt;/li&gt;
+		&lt;/script&gt;
+
+	&lt;/spxt:TemplateContainer&gt;
+</pre>
+
+<p>
+  An inner <code>&lt;script&gt;</code> tag is optional when only one template is being declared, but in the case where multiple
+  templates are being declared then these templates must be segregated within <code>&lt;script&gt;</code> tags. The client-side
+  name for each template is therefore declared on each <code>&lt;script&gt;</code> tag.
+</p>
+
+<p>
+  The client-side name may be declared with either an <em>id</em> or a <em>name</em> attribute.
+</p>
+
+<pre class="brush: html">
+  &lt;script type="text/html" id="testTemplate"&gt;
+  
+  // or
+  
+  &lt;script type="text/html" name="testTemplate"&gt;
+</pre>
+
+<p>
+	The examples above will move each HTML template into a 
+	<abbr title="SuperScript.Templates.Declarables.TemplateDeclaration"><code>TemplateDeclaration</code></abbr> declaration. 
+	These declarations will be emitted through the an 
+	<abbr title="SuperScript.Emitters.IEmitter"><code>IEmitter</code></abbr> with the 
+	<abbr title="SuperScript.Emitters.IEmitter.Key"><code>Key</code></abbr> "templates". (Note that this requires that 
+	an <abbr title="SuperScript.Emitters.IEmitter"><code>IEmitter</code></abbr> with the 
+	<abbr title="SuperScript.Emitters.IEmitter.Key"><code>Key</code></abbr> "templates" is configured within the project. 
+	This is not provided out of the box by SuperScript.)
+</p>
+
+<p>
+  Because of the <em>0</em> supplied in the first <abbr title="SuperScript.Templates.Declarables.TemplateDeclaration"><code>TemplateDeclaration</code></abbr>
+  declaration, the declaration created in the above example will be added as the first item in the <abbr title="SuperScript.Declarations.Collection"><code>Collection</code></abbr>. 
+	Note that this declarable will only be assured as the first item in the <abbr title="SuperScript.Declarations.Collection"><code>Collection</code></abbr> at
+	the time it is being processed; this is notwithstanding any later declarations which may also be inserted at the same index.
+</p>
