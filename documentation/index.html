@@ -165,7 +165,7 @@
 <pre class="brush: html">
 	&lt;%@ Register TagPrefix="spxt" Namespace="SuperScript.Templates.WebForms.Containers" Assembly="SuperScript.Templates.WebForms" %&gt;
 	&#10;
-	&lt;spxt:TemplateContainer runat="server" EmitterKey="templates" Name="testTemplate"&gt;
+	&lt;spxt:TemplateContainer runat="server" EmitterKey="templates" InsertAt="0" Name="testTemplate"&gt;
 
 		&lt;li&gt;${Name}&lt;/li&gt;
 
@@ -184,7 +184,7 @@
 <pre class="brush: html">
 	&lt;%@ Register TagPrefix="spxt" Namespace="SuperScript.Templates.WebForms.Containers" Assembly="SuperScript.Templates.WebForms" %&gt;
 	&#10;
-	&lt;spxt:TemplateContainer runat="server" EmitterKey="templates" InsertAt="0"&gt;
+	&lt;spxt:TemplateContainer runat="server" EmitterKey="templates"&gt;
 
 		&lt;script type="text/html" id="testTemplate"&gt;
 			&lt;li&gt;${Name}&lt;/li&gt;
